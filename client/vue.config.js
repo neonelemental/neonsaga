@@ -29,6 +29,8 @@ module.exports = {
         '@layouts': path.resolve(__dirname, 'src/layouts'),
         '@store': path.resolve(__dirname, 'src/store'),
         '@mixins': path.resolve(__dirname, 'src/mixins'),
+        '@sounds': path.resolve(__dirname, 'src/assets/sounds'),
+        '@utils': path.resolve(__dirname, 'src/utils'),
       }
     }
   },

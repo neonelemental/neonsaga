@@ -1,0 +1,22 @@
+@mixin center($top) {
+  position: absolute;
+  left: 50%;
+  top: $top;
+  text-align: center;
+  transform: translateY(-50%) translateX(-50%);
+}
+
+@mixin fixed-dimensions($width, $height) {
+  min-width: $width;
+  width: $width;
+  max-width: $width;
+  min-height: $height;
+  height: $height;
+  max-height: $height;
+}
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  border-radius: $radius;
+  background-clip: padding-box;  /* stops bg color from leaking outside the border: */
+}

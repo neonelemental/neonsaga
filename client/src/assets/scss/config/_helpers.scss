@@ -1,0 +1,37 @@
+$spaceamounts: (.25rem, .5rem, 1rem, 2rem);
+$counters: (1,2,3,4);
+$sides: (top, bottom, left, right);
+
+@each $counter in $counters {
+  .text-#{$counter} {
+    font-size: nth($spaceamounts, $counter) !important;
+  }
+
+  ._p0 { padding: 0 }
+  ._p#{$counter} {
+    padding: nth($spaceamounts, $counter) !important;
+  }
+
+  ._m0 { margin: 0 }
+  ._m#{$counter} {
+    margin: nth($spaceamounts, $counter) !important;
+  }
+
+  @each $side in $sides {
+    ._m#{str-slice($side, 0, 1)}#{0} {
+      margin-#{$side}: 0 !important;
+    }
+
+    ._p#{str-slice($side, 0, 1)}#{0} {
+      padding-#{$side}: 0 !important;
+    }
+
+    ._m#{str-slice($side, 0, 1)}#{$counter} {
+      margin-#{$side}: nth($spaceamounts, $counter) !important;
+    }
+
+    ._p#{str-slice($side, 0, 1)}#{$counter} {
+      padding-#{$side}: nth($spaceamounts, $counter) !important;
+    }
+  }
+}

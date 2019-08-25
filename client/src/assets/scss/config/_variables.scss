@@ -1,0 +1,12 @@
+$sprite-size: 16px;
+$true-black: #030303;
+$black: #03030f;
+$white: #faf3ff;
+
+$game-window-padding: 32px;
+$game-window-width: 768px;
+$game-window-height: 512px;
+
+$game-dialog-padding: 32px;
+$game-dialog-width: calc(#{$game-window-width} - #{$game-window-padding} - #{$game-dialog-padding});
+$game-dialog-height: calc(128px - #{$game-dialog-padding} * 2);

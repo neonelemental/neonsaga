@@ -4,8 +4,9 @@
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
   .game-layout {
+    position: relative;
     height: 100%;
     width: 100%;
   }

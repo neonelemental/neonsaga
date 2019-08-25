@@ -1,0 +1,7 @@
+@import url('https://fonts.googleapis.com/css?family=VT323&display=swap');
+
+$dialog-font: 'VT323', monospace;
+.dialog-font {
+  font-family: $dialog-font;
+  line-height: 1rem;
+}

@@ -1,0 +1,44 @@
+@import './config';
+@import './rpg-resources';
+
+html, body, #app {
+  min-width: 1280px;
+  min-height: 698px;
+
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  background: $black;
+  color: $white;
+  font-family: $dialog-font;
+}
+
+.game-layout {
+  height: 100%;
+  width: 100%;
+  position: relative;
+
+  .game {
+    @include center(50%);
+    @include fixed-dimensions($game-window-width, $game-window-height);
+    @include border-radius(6px);
+
+    background: $true-black;
+    border: 3px solid lighten($black, 6%);
+
+
+    .game-dialog {
+      @include fixed-dimensions($game-dialog-width, $game-dialog-height);
+
+      * {
+        margin: 0;
+      }
+
+      position: absolute;
+      bottom: 0;
+      text-align: left;
+      margin-left: $game-window-padding;
+    }
+  }
+}
