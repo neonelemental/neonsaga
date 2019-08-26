@@ -13,7 +13,7 @@
         required: true
       },
       speed: {
-        default: 50,
+        default: 33,
         type: Number,
         required: false
       },

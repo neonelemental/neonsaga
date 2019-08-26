@@ -4,7 +4,6 @@
 html, body, #app {
   min-width: 1280px;
   min-height: 698px;
-
   height: 100%;
   width: 100%;
   padding: 0;
@@ -28,17 +27,30 @@ html, body, #app {
     border: 3px solid lighten($black, 6%);
 
 
-    .game-dialog {
+    > .game-dialog {
       @include fixed-dimensions($game-dialog-width, $game-dialog-height);
 
-      * {
+      > * {
+        margin: 0 16px;
+        color: darken($white, 9%);
+      }
+
+      > .dialog-pane {
+        width: 100%;
+        height: 100%;
         margin: 0;
+
+        > .dialog-pane-row {
+          display: flex;
+        }
       }
 
       position: absolute;
-      bottom: 0;
+      bottom: 32px;
       text-align: left;
       margin-left: $game-window-padding;
+      display: flex;
+      align-items: center;
     }
   }
 }

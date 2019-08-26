@@ -18,6 +18,7 @@ namespace :stylesheets do
       FileUtils.cp(png_path, images_path)
 
       width, height = IO.read(png_path)[0x10..0x18].unpack('NN')
+
       sprite_count_x = (width / 16).to_i
       sprite_count_y = (height / 16).to_i
 

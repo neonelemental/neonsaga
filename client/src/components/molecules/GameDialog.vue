@@ -1,6 +1,8 @@
 <template>
   <div class="game-dialog">
+    <dialog-pane/>
     <text-writer
+      class="text-writer"
       tag="h3"
       :text="text"
       @doneWriting="stopSound"
@@ -38,3 +40,15 @@
     }
   }
 </script>
+
+<style lang="scss" scoped>
+  .dialog-pane {
+    position: absolute;
+    z-index: 1;
+  }
+
+  .text-writer {
+    position: absolute;
+    z-index: 2;
+  }
+</style>
