@@ -1,6 +1,9 @@
 <template>
   <dialog-pane>
     <text-writer
+      v-shortkey="['enter']"
+      @shortkey.native="nextMessage()"
+      ref="typer"
       class="text-writer"
       tag="h3"
       :text="text"
@@ -30,7 +33,8 @@
           src: [ dialogSound ],
           autoplay: true,
           loop: true,
-        })
+        }),
+        typing: true,
       }
     },
     computed: {
@@ -41,6 +45,21 @@
     methods: {
       stopSound () {
         this.sound.stop();
+        this.typing = false;
+      },
+      startSound () {
+        this.sound.play();
+        this.typing = true;
+      },
+      nextMessage () {
+        if(this.messageIndex === this.messages.length -1 || this.typing) {
+          this.$refs.typer.stopTyping();
+          this.stopSound();
+        }
+        else {
+          this.messageIndex++;
+          this.startSound()
+        }
       },
     }
   }

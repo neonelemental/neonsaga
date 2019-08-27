@@ -6,6 +6,15 @@
 
 <script>
   export default {
+    mounted() {
+      this.typeCharacter();
+    },
+    watch: {
+      'text' () {
+        this.tick = 0;
+        this.typeCharacter();
+      },
+    },
     props: {
       text: {
         default: '',
@@ -26,6 +35,7 @@
     data () {
       return {
         tick: 0,
+        currentTimeout: null
       }
     },
     computed: {
@@ -35,17 +45,18 @@
     },
     methods: {
       typeCharacter () {
-        return setTimeout(() => {
+        this.currentTimeout = setTimeout(() => {
           this.tick++;
           if(! (this.tick === this.text.length) )
             this.typeCharacter();
           else
             this.$emit('doneWriting');
         }, this.speed);
+      },
+      stopTyping () {
+        clearTimeout(this.currentTimeout);
+        this.tick = this.text.length;
       }
     },
-    mounted() {
-      this.typeCharacter();
-    }
   }
 </script>
