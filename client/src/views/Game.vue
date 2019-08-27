@@ -1,10 +1,9 @@
 <template>
   <game-layout>
     <div class="game">
-      <game-dialog
-        v-if="dialogMessages.length"
-        :messages="dialogMessages"
-      />
+      <fade-transition>
+        <game-dialog v-if="dialogMessages.length" :messages="dialogMessages"/>
+      </fade-transition>
     </div>
   </game-layout>
 </template>
