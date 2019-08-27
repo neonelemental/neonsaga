@@ -3,7 +3,7 @@
     <text-writer
       v-shortkey="['enter']"
       @shortkey.native="nextMessage()"
-      ref="typer"
+      ref="textWriter"
       class="text-writer"
       tag="h3"
       :text="text"
@@ -16,6 +16,7 @@
   import nextSound from '@sounds/action.mp3';
   import dialogSound from '@sounds/dialog.wav';
   import Sound from '@utils/sound';
+  import { mapActions } from 'vuex';
 
   export default {
     props: {
@@ -34,41 +35,52 @@
           src: [ dialogSound ],
           autoplay: true,
           loop: true,
+          volume: 1.5,
         }),
         nextSound: new Sound({
           src: [ nextSound ],
           autoplay: false,
           loop: false,
-          volume: 0.125,
+          volume: 0.1,
         }),
         typing: false,
+        dialogOver: false,
       }
     },
     computed: {
       text () {
         return this.messages[this.messageIndex];
       },
+      lastMessage () {
+        return this.messageIndex === this.messages.length -1;
+      },
     },
     methods: {
-      doneWriting () {
-        this.typing = false;
-        this.stopSound(this.scrobbleSound);
-      },
-      startWriting () {
-        this.startSound(this.scrobbleSound);
-        this.typing = true;
-      },
+      ...mapActions('dialog', ['closeDialog']),
       nextMessage () {
-        if(this.messageIndex === this.messages.length -1 || this.typing) {
-          if(this.typing)
-            this.startSound(this.nextSound);
-          this.$refs.typer.stopTyping();
+        if(this.typing) // We're stopping the typing, so provide audio feedback
+          this.startSound(this.nextSound);
+        if(this.dialogOver) // We've seen the last dialog message, so close the dialog box.
+          return this.closeDialog();
+
+        if(this.lastMessage || this.typing) {
+          this.$refs.textWriter.stopTyping();
           this.doneWriting();
         }
         else {
           this.messageIndex++;
           this.startWriting();
         }
+      },
+      doneWriting () {
+        if(this.lastMessage)
+          this.dialogOver = true;
+        this.typing = false;
+        this.stopSound(this.scrobbleSound);
+      },
+      startWriting () {
+        this.startSound(this.scrobbleSound);
+        this.typing = true;
       },
     }
   }

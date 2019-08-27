@@ -5,9 +5,19 @@ const state = {
   ]
 };
 
-const actions = {};
 const getters = {};
-const mutations = {};
+
+const actions = {
+  closeDialog (context) {
+    context.commit('clearDialogMessages');
+  }
+};
+
+const mutations = {
+  clearDialogMessages (state) {
+    state.dialogMessages = []
+  }
+};
 
 export default {
   namespaced: true,

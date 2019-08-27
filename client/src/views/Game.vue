@@ -2,6 +2,7 @@
   <game-layout>
     <div class="game">
       <game-dialog
+        v-if="dialogMessages.length"
         :messages="dialogMessages"
       />
     </div>
