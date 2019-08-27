@@ -5,9 +5,11 @@ import store from './store'
 import '@scss/application.scss';
 import './globals';
 import './sounds';
+import sound from '@mixins/sound';
 
 Vue.config.productionTip = false;
 Vue.use(require('vue-shortkey'))
+Vue.mixin(sound);
 
 new Vue({
   router,
