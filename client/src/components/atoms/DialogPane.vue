@@ -1,5 +1,9 @@
 <template>
   <div class="dialog-pane" ref="dialogPane">
+    <div class="slot-wrapper">
+      <slot/>
+    </div>
+
     <div v-for="y in numY" class="dialog-pane-row" :key="y">
       <div v-for="x in numX" class="dialog" :class="getClass(x,y)" :key="x"/>
     </div>
@@ -55,3 +59,15 @@
     },
   }
 </script>
+
+<style lang="scss" scoped>
+  .dialog-pane {
+    position: absolute;
+    z-index: 1;
+  }
+
+  .slot-wrapper {
+    position: absolute;
+    z-index: 2;
+  }
+</style>
