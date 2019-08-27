@@ -7,7 +7,7 @@
       class="text-writer"
       tag="h3"
       :text="text"
-      @doneWriting="() => this.stopSound(this.scrobbleSound)"
+      @doneWriting="doneWriting"
     />
   </dialog-pane>
 </template>
@@ -25,7 +25,7 @@
       }
     },
     mounted () {
-      this.startSound(this.scrobbleSound);
+      this.startWriting();
     },
     data () {
       return {
@@ -41,7 +41,7 @@
           loop: false,
           volume: 0.125,
         }),
-        typing: true,
+        typing: false,
       }
     },
     computed: {
@@ -50,18 +50,24 @@
       },
     },
     methods: {
+      doneWriting () {
+        this.typing = false;
+        this.stopSound(this.scrobbleSound);
+      },
+      startWriting () {
+        this.startSound(this.scrobbleSound);
+        this.typing = true;
+      },
       nextMessage () {
         if(this.messageIndex === this.messages.length -1 || this.typing) {
           if(this.typing)
             this.startSound(this.nextSound);
           this.$refs.typer.stopTyping();
-          this.stopSound(this.scrobbleSound);
-          this.typing = false;
+          this.doneWriting();
         }
         else {
           this.messageIndex++;
-          this.startSound(this.scrobbleSound);
-          this.typing = true;
+          this.startWriting();
         }
       },
     }

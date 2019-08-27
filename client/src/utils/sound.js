@@ -7,6 +7,8 @@ export default class Sound {
       ...options,
       onend: () => {
         this.playing = false;
+        if(options.onend)
+          options.onend();
       },
     });
     this.playing = options.autoplay;
