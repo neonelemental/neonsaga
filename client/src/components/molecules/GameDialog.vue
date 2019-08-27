@@ -13,6 +13,7 @@
 </template>
 
 <script>
+  import nextSound from '@sounds/action.mp3';
   import dialogSound from '@sounds/dialog.wav';
   import Sound from '@utils/sound';
 
@@ -34,6 +35,12 @@
           autoplay: true,
           loop: true,
         }),
+        nextSound: new Sound({
+          src: [ nextSound ],
+          autoplay: false,
+          loop: false,
+          volume: 0.125,
+        }),
         typing: true,
       }
     },
@@ -45,6 +52,8 @@
     methods: {
       nextMessage () {
         if(this.messageIndex === this.messages.length -1 || this.typing) {
+          if(this.typing)
+            this.startSound(this.nextSound);
           this.$refs.typer.stopTyping();
           this.stopSound(this.scrobbleSound);
           this.typing = false;

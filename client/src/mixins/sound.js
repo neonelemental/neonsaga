@@ -5,7 +5,7 @@ export default {
         sound.stop();
     },
     startSound (sound) {
-      if(!sound.playing)
+      if(!sound.playing || !sound.options.autoplay)
         sound.play();
     },
   }
