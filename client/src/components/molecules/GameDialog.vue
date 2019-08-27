@@ -58,22 +58,22 @@
     methods: {
       ...mapActions('dialog', ['closeDialog']),
       nextMessage () {
-        if(this.typing) // We're stopping the typing, so provide audio feedback
+        if(this.typing) // We're stopping the typing, so provide audio feedback.
           this.startSound(this.nextSound);
         if(this.dialogOver) // We've seen the last dialog message, so close the dialog box.
           return this.closeDialog();
 
-        if(this.lastMessage || this.typing) {
+        if(this.lastMessage || this.typing) { // the user wants to skip the message being written.
           this.$refs.textWriter.stopTyping();
           this.doneWriting();
         }
-        else {
+        else { // the user has requested the next message in the queue to be written.
           this.messageIndex++;
           this.startWriting();
         }
       },
       doneWriting () {
-        if(this.lastMessage)
+        if(this.lastMessage)  // Let the rest of the dialog component know there are no more messages to show.
           this.dialogOver = true;
         this.typing = false;
         this.stopSound(this.scrobbleSound);
