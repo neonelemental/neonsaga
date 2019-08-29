@@ -1,18 +1,16 @@
 <template>
-  <div class="dialog-pickem">
-    <dialog-pane>
-      <ul
-        v-shortkey="{ up: ['arrowup'], down: ['arrowdown'], enter: ['enter'] }"
-        @shortkey="setActive"
-      >
-        <li v-for="(option, i) in options" :class="active === i ? 'active' : null">
-          <h3>
-            {{ option.label }}
-          </h3>
-        </li>
-      </ul>
-    </dialog-pane>
-  </div>
+  <menu-layout class="dialog-pickem">
+    <ul
+      v-shortkey="{ up: ['arrowup'], down: ['arrowdown'], enter: ['enter'] }"
+      @shortkey="setActive"
+    >
+      <li v-for="(option, i) in options" :class="active === i ? 'active' : null">
+        <h3>
+          {{ option.label }}
+        </h3>
+      </li>
+    </ul>
+  </menu-layout>
 </template>
 
 <script>

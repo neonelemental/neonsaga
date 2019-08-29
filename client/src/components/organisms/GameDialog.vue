@@ -1,5 +1,5 @@
 <template>
-  <dialog-pane>
+  <menu-layout>
     <dialog-pickem
       ref="pickem"
       :options="options"
@@ -14,7 +14,7 @@
       v-model="writing"
       :text="text"
     />
-  </dialog-pane>
+  </menu-layout>
 </template>
 
 <script>
