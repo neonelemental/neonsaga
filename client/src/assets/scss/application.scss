@@ -1,5 +1,6 @@
 @import './config';
 @import './rpg-resources';
+@import './layouts';
 @import './components';
 
 html, body, #app {
@@ -12,27 +13,4 @@ html, body, #app {
   background: $black;
   color: $white;
   font-family: $dialog-font;
-}
-
-.game-layout {
-  height: 100%;
-  width: 100%;
-  position: relative;
-
-  .game {
-    @include center(50%);
-    @include fixed-dimensions($game-window-width, $game-window-height);
-    @include border-radius(6px);
-
-    background: $true-black;
-    border: 3px solid lighten($black, 6%);
-
-    > .dialog-pane {
-      @include fixed-dimensions($game-dialog-width, $game-dialog-height);
-
-      position: absolute;
-      bottom: 32px;
-      margin-left: $game-window-padding;
-    }
-  }
 }

@@ -1,0 +1,28 @@
+.game-layout {
+  height: 100%;
+  width: 100%;
+  position: relative;
+
+  .game {
+    @include center(50%);
+    @include fixed-dimensions($game-window-width, $game-window-height);
+    @include border-radius(6px);
+
+    background: $true-black;
+    border: 3px solid lighten($black, 6%);
+
+    > .game-dialog {
+      @include fixed-dimensions($game-dialog-width, $game-dialog-height);
+
+      position: absolute;
+      bottom: 32px;
+      margin-left: $game-window-padding;
+    }
+
+    > .player-menu {
+      @include fixed-dimensions(128px, calc(100% - 64px));
+      margin-top: 32px;
+      margin-left: 32px;
+    }
+  }
+}

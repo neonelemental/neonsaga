@@ -1,5 +1,5 @@
 <template>
-  <menu-layout>
+  <menu-layout class="game-dialog">
     <dialog-pickem
       ref="pickem"
       :options="options"
@@ -35,10 +35,7 @@
     },
     watch: {
       'writing' (isWriting) {
-        if(isWriting)
-          this.startSound(this.scrobbleSound);
-        else
-          this.stopSound(this.scrobbleSound);
+        isWriting ? this.startSound(this.scrobbleSound) : this.stopSound(this.scrobbleSound);
       }
     },
     data () {
@@ -85,7 +82,7 @@
           return this.closeDialog();
       },
       handleNextMessageEvent () {
-        if(this.writing)  // User has skipped the writing, so provide audio feedback.
+        if(this.writing) // User has skipped the writing, so provide audio feedback.
           this.startSound(this.nextSound);
         if(this.lastMessage || this.writing) // the user wants to skip the message being written.
           this.$refs.textWriter.stopWriting();

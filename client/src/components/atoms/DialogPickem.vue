@@ -4,10 +4,12 @@
       v-shortkey="{ up: ['arrowup'], down: ['arrowdown'], enter: ['enter'] }"
       @shortkey="setActive"
     >
-      <li v-for="(option, i) in options" :class="active === i ? 'active' : null">
-        <h3>
-          {{ option.label }}
-        </h3>
+      <li
+        v-for="(option, i) in options"
+        :class="active === i ? 'active' : null"
+        :key="i"
+      >
+        <h3>{{ option.label }}</h3>
       </li>
     </ul>
   </menu-layout>
