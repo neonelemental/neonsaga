@@ -13,6 +13,7 @@
       'text' () {
         this.tick = 0;
         this.typeCharacter();
+        this.$emit('input', true);
       },
     },
     props: {
@@ -50,11 +51,12 @@
           if(! (this.tick === this.text.length) )
             this.typeCharacter();
           else
-            this.$emit('doneWriting');
+            this.$emit('input', false);
         }, this.speed);
       },
-      stopTyping () {
+      stopWriting () {
         clearTimeout(this.currentTimeout);
+        this.$emit('input', false);
         this.tick = this.text.length;
       }
     },

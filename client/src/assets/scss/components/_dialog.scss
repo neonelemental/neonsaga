@@ -1,0 +1,52 @@
+.dialog-pane {
+  text-align: left;
+  position: relative;
+
+  > .slot-wrapper {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+
+    > *:not(.dialog-pickem) {
+      margin: 0 16px;
+      color: darken($white, 9%);
+    }
+  }
+
+  > .dialog-pane-row {
+    display: flex;
+  }
+}
+
+.dialog-pickem {
+  @include fixed-dimensions(80px, 64px);
+
+  position: absolute;
+  top: -80px;
+  right: 0;
+
+  ul {
+    list-style: none;
+    margin: 0 !important;
+    padding-left: 32px;
+
+    > li > * {
+      margin: 0;
+      text-align: left;
+    }
+
+    > li.active {
+      &:before {
+        content: '\003e';
+        position: absolute;
+        left: 16px;
+      }
+    }
+  }
+
+  > .dialog-pane {
+    width: 100%;
+    height: 100%;
+  }
+}

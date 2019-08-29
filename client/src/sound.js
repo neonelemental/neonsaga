@@ -1,6 +1,13 @@
+import nextSound from '@sounds/action.mp3';
+import dialogSound from '@sounds/dialog.wav';
 import { Howl } from 'howler';
 
-export default class Sound {
+export const sounds = {
+  nextSound,
+  dialogSound
+};
+
+export class Sound {
   constructor ( options = {} ) {
     this.options = options;
     this.audioContext = new Howl({
