@@ -31,6 +31,7 @@ module.exports = {
         '@mixins': path.resolve(__dirname, 'src/mixins'),
         '@sounds': path.resolve(__dirname, 'src/assets/sounds'),
         '@utils': path.resolve(__dirname, 'src/utils'),
+        '@modules': path.resolve(__dirname, 'src/modules'),
       }
     }
   },

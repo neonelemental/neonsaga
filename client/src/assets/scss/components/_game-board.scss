@@ -1,0 +1,21 @@
+.game-board {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+
+  > .sprite-row {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+
+    > .sprite-container {
+      @include fixed-dimensions(16px, 16px);
+
+      > div {
+        @include fixed-dimensions(16px, 16px);
+      }
+    }
+  }
+}

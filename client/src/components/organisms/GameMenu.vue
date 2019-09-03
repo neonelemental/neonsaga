@@ -7,30 +7,29 @@
     />
     <player-menu
       v-else-if="playerMenuOpen"
-      @closePlayerMenu="playerMenuOpen = false"
+      @closePlayerMenu="togglePlayerMenuOpen"
     />
     <div
       v-else
       v-shortkey="['enter']"
-      @shortkey="playerMenuOpen = true"
+      @shortkey="togglePlayerMenuOpen"
     />
   </fade-transition>
 </template>
 
 <script>
-  import { mapState } from 'vuex';
+  import { mapState, mapActions } from 'vuex';
 
   export default {
     computed: {
       ...mapState('dialog', {
         dialogMessages: state => state.dialogMessages,
-        dialogSelectOptions: state => state.dialogSelectOptions
+        dialogSelectOptions: state => state.dialogSelectOptions,
+        playerMenuOpen: state => state.playerMenuOpen
       })
     },
-    data () {
-      return {
-        playerMenuOpen: false,
-      }
-    },
+    methods: {
+      ...mapActions('dialog', ['togglePlayerMenuOpen'])
+    }
   }
 </script>

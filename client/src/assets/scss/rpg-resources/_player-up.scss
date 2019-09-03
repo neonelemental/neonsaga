@@ -1,0 +1,22 @@
+.player-up {
+	background-image: url(~@/assets/images/rpg-resources/player-up.png);
+	width: $sprite-size;
+	height: $sprite-size;
+
+	&.player-up-1-1 {
+		background-position: multiply-px(0px, $sprite-size) multiply-px(0px, $sprite-size);
+	}
+
+	&.player-up-2-1 {
+		background-position: multiply-px(-1px, $sprite-size) multiply-px(0px, $sprite-size);
+	}
+
+	&.player-up-3-1 {
+		background-position: multiply-px(-2px, $sprite-size) multiply-px(0px, $sprite-size);
+	}
+
+	&.player-up-4-1 {
+		background-position: multiply-px(-3px, $sprite-size) multiply-px(0px, $sprite-size);
+	}
+
+}
